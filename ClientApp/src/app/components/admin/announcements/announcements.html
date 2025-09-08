@@ -1,0 +1,324 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800">Announcements</h1>
+      <p class="text-gray-600">Manage announcements for your properties</p>
+    </div>
+    <div class="flex space-x-4">
+      <a routerLink="/admin/dashboard" class="text-blue-500 hover:text-blue-700 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Dashboard
+      </a>
+      <button (click)="showNewAnnouncementDialog()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        New Announcement
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="flex justify-center py-10">
+    <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+  </div>
+
+  <!-- Main content grid -->
+  <div *ngIf="!isLoading" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Left column: Announcement list -->
+    <div [class]="selectedAnnouncement ? 'lg:col-span-1 hidden lg:block' : 'lg:col-span-3'">
+      <!-- Search box -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="relative">
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            (input)="searchAnnouncements()"
+            placeholder="Search announcements..." 
+            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          >
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Announcement list -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-semibold text-gray-800">All Announcements</h2>
+          <span class="text-sm text-gray-500">{{ filteredAnnouncements.length }} {{ filteredAnnouncements.length === 1 ? 'announcement' : 'announcements' }}</span>
+        </div>
+        
+        <div *ngIf="filteredAnnouncements.length === 0" class="text-center py-8 text-gray-500">
+          No announcements found.
+        </div>
+        
+        <div *ngIf="filteredAnnouncements.length > 0" class="space-y-4">
+          <div *ngFor="let announcement of filteredAnnouncements" 
+               (click)="viewAnnouncementDetails(announcement)"
+               class="border rounded-lg p-4 hover:bg-gray-50 cursor-pointer transition"
+               [class.border-blue-300]="selectedAnnouncement?.announcementId === announcement.announcementId">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-medium text-lg">{{ announcement.title }}</h3>
+                <div class="text-sm text-gray-500 flex flex-wrap items-center gap-1">
+                  <span>{{ announcement.startDate | date:'MMM d, y' }}</span>
+                  <span *ngIf="announcement.endDate">- {{ announcement.endDate | date:'MMM d, y' }}</span>
+                  <span class="mx-1">•</span>
+                  <span [class.text-green-500]="announcement.isActive" [class.text-red-500]="!announcement.isActive">
+                    {{ announcement.isActive ? 'Active' : 'Inactive' }}
+                  </span>
+                </div>
+              </div>
+              <button 
+                (click)="deleteAnnouncement(announcement.announcementId!); $event.stopPropagation()"
+                class="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50"
+                title="Delete Announcement"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            <p class="mt-2 text-sm text-gray-600 line-clamp-2">{{ announcement.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right column: Announcement details or New Announcement form -->
+    <div *ngIf="selectedAnnouncement || showNewAnnouncementForm" class="lg:col-span-2">
+      <!-- Selected announcement details -->
+      <div *ngIf="selectedAnnouncement" class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-gray-800">Announcement Details</h2>
+          <button 
+            (click)="closeDetails()" 
+            class="text-gray-500 hover:text-gray-700 lg:hidden"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-2xl font-medium text-gray-800 mb-4">{{ selectedAnnouncement.title }}</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
+            <div>
+              <span class="font-medium text-gray-700">Status:</span>
+              <span 
+                class="ml-2 px-2 py-1 rounded-full text-xs font-medium"
+                [class.bg-green-100]="selectedAnnouncement.isActive"
+                [class.text-green-800]="selectedAnnouncement.isActive"
+                [class.bg-red-100]="!selectedAnnouncement.isActive"
+                [class.text-red-800]="!selectedAnnouncement.isActive"
+              >
+                {{ selectedAnnouncement.isActive ? 'Active' : 'Inactive' }}
+              </span>
+            </div>
+            
+            <div>
+              <span class="font-medium text-gray-700">Created by:</span>
+              <span class="ml-2 text-gray-600">{{ selectedAnnouncement.issuer?.name || 'Unknown' }}</span>
+            </div>
+            
+            <div>
+              <span class="font-medium text-gray-700">Start Date:</span>
+              <span class="ml-2 text-gray-600">{{ selectedAnnouncement.startDate | date:'MMM d, y' }}</span>
+            </div>
+            
+            <div *ngIf="selectedAnnouncement.endDate">
+              <span class="font-medium text-gray-700">End Date:</span>
+              <span class="ml-2 text-gray-600">{{ selectedAnnouncement.endDate | date:'MMM d, y' }}</span>
+            </div>
+            
+            <div *ngIf="selectedAnnouncement.propertyId">
+              <span class="font-medium text-gray-700">Property:</span>
+              <span class="ml-2 text-gray-600">{{ selectedAnnouncement.property?.name || 'Property ' + selectedAnnouncement.propertyId }}</span>
+            </div>
+            
+            <div *ngIf="selectedAnnouncement.createdAt">
+              <span class="font-medium text-gray-700">Created:</span>
+              <span class="ml-2 text-gray-600">{{ selectedAnnouncement.createdAt | date:'MMM d, y h:mm a' }}</span>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <h4 class="font-medium text-gray-700 mb-2">Content:</h4>
+            <div class="bg-gray-50 p-4 rounded-lg whitespace-pre-line">
+              {{ selectedAnnouncement.content }}
+            </div>
+          </div>
+          
+          <div class="flex justify-end">
+            <button 
+              (click)="deleteAnnouncement(selectedAnnouncement.announcementId!)" 
+              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- New announcement form -->
+      <div *ngIf="showNewAnnouncementForm" class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-gray-800">New Announcement</h2>
+          <button 
+            (click)="cancelNewAnnouncement()" 
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div class="space-y-4">
+          <!-- Title -->
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            <input 
+              type="text" 
+              id="title" 
+              [(ngModel)]="newAnnouncement.title" 
+              placeholder="Enter announcement title" 
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            >
+          </div>
+          
+          <!-- Content -->
+          <div>
+            <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Content</label>
+            <textarea 
+              id="content" 
+              [(ngModel)]="newAnnouncement.content" 
+              rows="5" 
+              placeholder="Enter announcement content" 
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            ></textarea>
+          </div>
+          
+          <!-- Date Range -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+              <input 
+                type="date" 
+                id="startDate" 
+                [(ngModel)]="newAnnouncement.startDate" 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              >
+            </div>
+            
+            <div>
+              <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End Date (Optional)</label>
+              <input 
+                type="date" 
+                id="endDate" 
+                [(ngModel)]="newAnnouncement.endDate" 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              >
+            </div>
+          </div>
+          
+          <!-- Recipients -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Recipients</label>
+            <div class="flex space-x-4 mb-3">
+              <div class="flex items-center">
+                <input 
+                  type="radio" 
+                  id="all" 
+                  [(ngModel)]="recipientType" 
+                  value="all" 
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                >
+                <label for="all" class="ml-2 text-sm text-gray-700">All Tenants</label>
+              </div>
+              
+              <div class="flex items-center">
+                <input 
+                  type="radio" 
+                  id="specific" 
+                  [(ngModel)]="recipientType" 
+                  value="specific" 
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                >
+                <label for="specific" class="ml-2 text-sm text-gray-700">Specific Units</label>
+              </div>
+            </div>
+            
+            <!-- Unit selection -->
+            <div *ngIf="recipientType === 'specific'" class="border rounded-md p-3 max-h-40 overflow-y-auto">
+              <div *ngIf="availableUnits.length === 0" class="text-sm text-gray-500">
+                No units available to select.
+              </div>
+              
+              <div *ngIf="availableUnits.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                <div *ngFor="let unit of availableUnits" class="flex items-center">
+                  <input 
+                    type="checkbox"
+                    [id]="'unit-' + unit.id"
+                    [checked]="isUnitSelected(unit.id)"
+                    (change)="toggleUnitSelection(unit.id)"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded"
+                  >
+                  <label [for]="'unit-' + unit.id" class="ml-2 text-sm text-gray-700">{{ unit.unitNumber }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Active status -->
+          <div class="flex items-center">
+            <input 
+              type="checkbox" 
+              id="isActive" 
+              [(ngModel)]="newAnnouncement.isActive" 
+              class="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded"
+            >
+            <label for="isActive" class="ml-2 text-sm text-gray-700">
+              Set as active (immediately visible to tenants)
+            </label>
+          </div>
+          
+          <!-- Form actions -->
+          <div class="flex justify-end space-x-3 pt-4">
+            <button 
+              (click)="cancelNewAnnouncement()" 
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            
+            <button 
+              (click)="saveAnnouncement()" 
+              class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center"
+              [disabled]="isSaving"
+            >
+              <span *ngIf="isSaving" class="inline-block mr-2">
+                <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </span>
+              {{ isSaving ? 'Saving...' : 'Post Announcement' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

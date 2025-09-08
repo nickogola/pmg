@@ -1,0 +1,120 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">Welcome, {{ userName }}</h1>
+    <div class="flex space-x-4">
+      <a routerLink="/tenant/create-ticket" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">
+        Create Ticket
+      </a>
+      <a routerLink="/tenant/payment" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">
+        Make Payment
+      </a>
+    </div>
+  </div>
+
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="flex justify-center py-10">
+    <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+  </div>
+
+  <!-- Dashboard content -->
+  <div *ngIf="!isLoading" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Left column -->
+    <div class="space-y-8">
+      <!-- Upcoming Payment -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-800">Upcoming Payment</h2>
+        <div *ngIf="upcomingPayment" class="p-4 border rounded-lg">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-medium">Rent Due:</span>
+            <span class="text-lg font-bold">${{ upcomingPayment.amount.toFixed(2) }}</span>
+          </div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-medium">Due Date:</span>
+            <span class="text-gray-700">{{ upcomingPayment.dueDate }}</span>
+          </div>
+          <a routerLink="/tenant/payment" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white py-2 rounded transition">
+            Pay Now
+          </a>
+        </div>
+        <div *ngIf="!upcomingPayment" class="text-gray-500 text-center p-4">
+          No upcoming payments due.
+        </div>
+      </div>
+
+      <!-- Recent Payments -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-800">Recent Payments</h2>
+        <div *ngIf="paymentHistory.length > 0" class="divide-y">
+          <div *ngFor="let payment of paymentHistory" class="py-3">
+            <div class="flex justify-between items-center">
+              <div>
+                <div class="font-medium">{{ payment.type }}</div>
+                <div class="text-sm text-gray-500">{{ payment.date }}</div>
+              </div>
+              <div class="text-lg font-bold text-green-600">${{ payment.amount.toFixed(2) }}</div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="paymentHistory.length === 0" class="text-gray-500 text-center p-4">
+          No payment history found.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="space-y-8">
+      <!-- Recent Tickets -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-gray-800">Recent Tickets</h2>
+          <a routerLink="/tenant/create-ticket" class="text-blue-500 hover:text-blue-700">
+            New Ticket
+          </a>
+        </div>
+        
+        <div *ngIf="recentTickets.length > 0" class="divide-y">
+          <div *ngFor="let ticket of recentTickets" class="py-3">
+            <div class="flex justify-between">
+              <div>
+                <div class="font-medium">{{ ticket.title }}</div>
+                <div class="text-sm text-gray-500">{{ ticket.createdAt }}</div>
+              </div>
+              <div [ngClass]="{
+                'bg-yellow-100 text-yellow-800': ticket.status === 'Open',
+                'bg-blue-100 text-blue-800': ticket.status === 'In Progress',
+                'bg-green-100 text-green-800': ticket.status === 'Resolved',
+                'bg-red-100 text-red-800': ticket.status === 'Closed'
+              }" class="px-2 py-1 rounded text-sm">
+                {{ ticket.status }}
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 mt-1">{{ ticket.description }}</div>
+          </div>
+        </div>
+        
+        <div *ngIf="recentTickets.length === 0" class="text-gray-500 text-center p-4">
+          No tickets found.
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-800">Quick Links</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <a routerLink="/tenant/create-ticket" class="p-4 border rounded-lg hover:bg-gray-50 flex flex-col items-center transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            <span>Create Ticket</span>
+          </a>
+          <a routerLink="/tenant/payment" class="p-4 border rounded-lg hover:bg-gray-50 flex flex-col items-center transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+            <span>Make Payment</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

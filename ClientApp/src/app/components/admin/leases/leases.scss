@@ -1,0 +1,115 @@
+/* Leases component styles */
+.container {
+  max-width: 1280px;
+}
+
+/* Add animation for the sidebar */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Add animation for modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style the details sidebar */
+div.fixed {
+  div.bg-white {
+    animation: slideIn 0.3s ease-out;
+  }
+}
+
+/* Style the modal */
+div.fixed.items-center {
+  .bg-white {
+    animation: fadeIn 0.3s ease-out;
+  }
+}
+
+/* Improve table responsiveness */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* Style status badges */
+.bg-green-100 {
+  &.text-green-800 {
+    border: 1px solid rgba(0, 128, 0, 0.2);
+  }
+}
+
+.bg-red-100 {
+  &.text-red-800 {
+    border: 1px solid rgba(128, 0, 0, 0.2);
+  }
+}
+
+.bg-yellow-100 {
+  &.text-yellow-800 {
+    border: 1px solid rgba(128, 128, 0, 0.2);
+  }
+}
+
+/* Form Styles */
+form {
+  .ng-touched.ng-invalid {
+    border-color: #f56565;
+  }
+  
+  .text-red-500 {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+  }
+  
+  input[type="date"], 
+  input[type="number"],
+  select {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    
+    &:focus {
+      border-color: #4299e1;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    }
+  }
+  
+  button[type="submit"] {
+    transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    
+    &:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+    
+    &:not(:disabled):hover {
+      background-color: #2b6cb0;
+    }
+  }
+}
+
+/* Add hover effect to action buttons */
+button.text-blue-600,
+button.text-yellow-600,
+button.text-red-600,
+button.text-green-600 {
+  transition: transform 0.1s ease;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+}

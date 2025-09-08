@@ -1,0 +1,15 @@
+<!-- App layout with navbar and router outlet -->
+<div class="min-h-screen flex flex-col">
+  <app-navbar />
+  
+  <main class="flex-1 p-4">
+    <router-outlet />
+  </main>
+  
+  <footer class="bg-gray-100 py-4 text-center text-gray-600 text-sm">
+    <p> &copy; {{ currentYear }}</p>
+  </footer>
+</div>
+
+<!-- 
+<router-outlet /> -->

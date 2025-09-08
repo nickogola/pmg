@@ -1,0 +1,33 @@
+// Chart styles
+.chart-container {
+  position: relative;
+  height: 200px;
+  margin: 20px 0;
+}
+
+// Hover effects for table
+tr:hover {
+  background-color: rgba(243, 244, 246, 0.8);
+  transition: background-color 0.2s;
+}
+
+// Custom scrollbar for tables
+.overflow-x-auto {
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+}
