@@ -65,12 +65,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -79,7 +75,7 @@
               "RelativeDocumentMoniker": "Controllers\\TicketsController.cs",
               "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\TicketsController.cs",
               "RelativeToolTip": "Controllers\\TicketsController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAA2wHQAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAA2wJoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T19:25:53.762Z",
               "EditorCaption": ""
@@ -239,6 +235,10 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T18:18:01.793Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

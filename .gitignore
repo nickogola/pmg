@@ -1,0 +1,75 @@
+# Visual Studio files
+.vs/
+.vscode/*
+/**/.vs
+/**/bin
+/**/obj
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio for Mac
+.vscode/
+*.userprefs
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+# Angular / Node.js
+# Keep ClientApp/.gitignore for Angular-specific ignores
+
+# ClientApp specific ignores are maintained in ClientApp/.gitignore 
+# This includes:
+# - /dist
+# - /tmp
+# - /out-tsc
+# - /bazel-out
+# - /node_modules
+# - npm-debug.log
+# - yarn-error.log
+# - Angular cache files
+
+# IDE - VS Code
+.history/*
+
+# Misc
+.DS_Store
+Thumbs.db

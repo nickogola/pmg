@@ -77,3 +77,4 @@ C:\Users\ogola\projects\project-mgt-angular\Server\obj\Debug\net7.0\staticwebass
 C:\Users\ogola\projects\project-mgt-angular\Server\obj\Debug\net7.0\staticwebassets.build.endpoints.json
 C:\Users\ogola\projects\project-mgt-angular\Server\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
 C:\Users\ogola\projects\project-mgt-angular\Server\obj\Debug\net7.0\Server.csproj.Up2Date
+C:\Users\ogola\projects\project-mgt-angular\Server\obj\Debug\net7.0\Server.sourcelink.json

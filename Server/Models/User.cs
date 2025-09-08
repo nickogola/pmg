@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,11 +42,21 @@ namespace Server.Models
         
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
+        [StringLength(50)]
+        public string? CompanyName { get; set; }
+        
+        // Subscription-related properties
+        public string? CurrentSubscriptionPlanId { get; set; }
+        
+        public bool HasPaymentMethod { get; set; } = false;
+        
         // Navigation properties
         public ICollection<Property>? OwnedProperties { get; set; }
         public ICollection<Lease>? Leases { get; set; }
         public ICollection<Ticket>? Tickets { get; set; }
         public ICollection<Announcement>? IssuedAnnouncements { get; set; }
         public ICollection<TicketComment>? TicketComments { get; set; }
+        public ICollection<Subscription>? Subscriptions { get; set; }
+        public ICollection<Invoice>? Invoices { get; set; }
     }
 }

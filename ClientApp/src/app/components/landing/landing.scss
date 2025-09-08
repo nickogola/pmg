@@ -1,0 +1,81 @@
+.landing-page {
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    transition: opacity 1s ease-in-out;
+  }
+
+  // Add a subtle zoom effect to carousel images
+  .carousel-inner {
+    .carousel-item img {
+      transition: transform 10s ease;
+      transform: scale(1);
+    }
+
+    .carousel-item.opacity-100 img {
+      transform: scale(1.1);
+    }
+  }
+
+  // Material icons styling
+  .material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+
+  // Testimonial cards with hover effect
+  .testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Feature card animation
+  .feature-card {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+
+      .material-icons {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  // Button animations
+  a.px-8 {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Pulse animation for CTA buttons
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.bg-blue-600:hover {
+  animation: pulse 1.5s infinite;
+}
