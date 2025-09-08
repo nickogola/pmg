@@ -1,0 +1,94 @@
+<nav class="bg-indigo-700 shadow">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex">
+        <div class="flex-shrink-0 flex items-center">
+          <!-- Logo could be added here -->
+          <span class="text-white font-bold text-lg">Property Manager</span>
+        </div>
+        <div class="hidden sm:ml-6 sm:flex sm:items-center">
+          <!-- Tenant Navigation -->
+          @if (isLoggedIn && userType === 'Tenant') {
+            <div class="flex space-x-4">
+              <a [routerLink]="['/tenant/dashboard']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+              <a [routerLink]="['/tenant/create-ticket']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Create Ticket</a>
+              <a [routerLink]="['/tenant/payment']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Make Payment</a>
+            </div>
+          }
+          
+          <!-- Admin/Landlord Navigation -->
+          @if (isLoggedIn && (userType === 'Admin' || userType === 'Landlord')) {
+            <div class="flex space-x-4">
+              <a [routerLink]="['/admin/dashboard']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+              <a [routerLink]="['/admin/manage-tickets']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Manage Tickets</a>
+              <a [routerLink]="['/admin/announcements']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Announcements</a>
+              <a [routerLink]="['/admin/payment-reports']" routerLinkActive="bg-indigo-800" class="text-white px-3 py-2 rounded-md text-sm font-medium">Payments</a>
+            </div>
+          }
+        </div>
+      </div>
+      
+      <div class="hidden sm:ml-6 sm:flex sm:items-center">
+        @if (isLoggedIn) {
+          <div class="flex items-center">
+            <span class="text-white mr-3">{{ userName }}</span>
+            <button 
+              type="button"
+              (click)="logout()"
+              class="bg-indigo-800 p-1 rounded-full text-white hover:bg-indigo-900 focus:outline-none"
+            >
+              <span class="px-2 py-1 text-sm">Logout</span>
+            </button>
+          </div>
+        }
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="flex items-center sm:hidden">
+        <button 
+          type="button" 
+          (click)="toggleMobileMenu()" 
+          class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-indigo-800 focus:outline-none"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon for menu toggle could be added here -->
+          <span class="block h-6 w-6 text-white">☰</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (isMobileMenuOpen) {
+    <div class="sm:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <!-- Tenant Navigation -->
+        @if (userType === 'Tenant') {
+          <a [routerLink]="['/tenant/dashboard']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+          <a [routerLink]="['/tenant/create-ticket']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Create Ticket</a>
+          <a [routerLink]="['/tenant/payment']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Make Payment</a>
+        }
+        
+        <!-- Admin/Landlord Navigation -->
+        @if (userType === 'Admin' || userType === 'Landlord') {
+          <a [routerLink]="['/admin/dashboard']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+          <a [routerLink]="['/admin/manage-tickets']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Manage Tickets</a>
+          <a [routerLink]="['/admin/announcements']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Announcements</a>
+          <a [routerLink]="['/admin/payment-reports']" routerLinkActive="bg-indigo-800" class="text-white block px-3 py-2 rounded-md text-base font-medium">Payments</a>
+        }
+        
+        <!-- Logout Button for Mobile -->
+        @if (isLoggedIn) {
+          <button 
+            type="button"
+            (click)="logout()"
+            class="w-full text-left text-white block px-3 py-2 rounded-md text-base font-medium bg-indigo-800 hover:bg-indigo-900"
+          >
+            Logout
+          </button>
+        }
+      </div>
+    </div>
+  }
+</nav>
