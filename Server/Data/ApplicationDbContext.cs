@@ -18,6 +18,8 @@ namespace Server.Data
         public DbSet<TicketComment> TicketComments { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -92,6 +94,26 @@ namespace Server.Data
                 .HasMany(t => t.Comments)
                 .WithOne(tc => tc.Ticket)
                 .HasForeignKey(tc => tc.TicketId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            // Configure Subscription entity
+            modelBuilder.Entity<Subscription>()
+                .HasOne(s => s.User)
+                .WithMany(u => u.Subscriptions)
+                .HasForeignKey(s => s.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            // Configure Invoice entity
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.User)
+                .WithMany(u => u.Invoices)
+                .HasForeignKey(i => i.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.Subscription)
+                .WithMany()
+                .HasForeignKey(i => i.SubscriptionId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

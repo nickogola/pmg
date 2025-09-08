@@ -1,0 +1,276 @@
+// Registration Wizard Component Styles
+
+// Step transitions
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Apply animations to each step
+div[class*="currentStep"] {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+// Progress bar animations
+div.rounded-full {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Progress indicator styles
+.flex.justify-between.items-center {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: #e5e7eb;
+    z-index: 0;
+  }
+}
+
+// Plan card hover effects with enhanced animations
+.border.rounded-lg {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+// Custom radio/selection button styles
+.w-6.h-6.rounded-full {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Animated checkbox for user type selection
+.w-12.h-12.bg-blue-100 {
+  transition: all 0.3s ease;
+  
+  .material-icons {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .material-icons {
+    transform: scale(1.2);
+  }
+}
+
+// Form validation styles with shake animation
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+input.ng-touched.ng-invalid {
+  border-color: #f56565;
+  animation: shake 0.4s ease-in-out;
+}
+
+.text-red-500 {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+// Button hover and active animations
+button {
+  &.bg-blue-600 {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover:not([disabled]) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5), 0 2px 4px -1px rgba(59, 130, 246, 0.3);
+    }
+    
+    &:active:not([disabled]) {
+      transform: translateY(0);
+    }
+  }
+  
+  &.border-gray-300 {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: #f9fafb;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+// Material icons animations
+.material-icons {
+  transition: all 0.2s ease;
+  
+  &.mr-1, &.ml-1 {
+    position: relative;
+    top: -1px;
+  }
+}
+
+button:hover .material-icons.ml-1 {
+  transform: translateX(2px);
+}
+
+button:hover .material-icons.mr-1 {
+  transform: translateX(-2px);
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .max-w-4xl {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .grid.grid-cols-1.md\\:grid-cols-2 {
+    gap: 1rem;
+  }
+}
+
+// Loading spinner animation
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+// Accessibility focus styles with subtle pulse
+@keyframes focusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(66, 153, 225, 0.4); }
+  70% { box-shadow: 0 0 0 4px rgba(66, 153, 225, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(66, 153, 225, 0); }
+}
+
+button:focus, a:focus, input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  animation: focusPulse 1.5s infinite;
+}
+
+// Subscription card highlight effect
+.ring-2 {
+  position: relative;
+  
+  &::after {
+    content: '✓';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+}
+
+// Background gradient animation
+.bg-gray-50 {
+  background-image: linear-gradient(
+    to bottom,
+    #f9fafb,
+    #f3f4f6
+  );
+}
+
+// Form field focus effect
+input, select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  
+  &:focus {
+    border-color: #3b82f6;
+  }
+}
+
+// Step title animations
+h2.text-2xl.font-bold {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after {
+    width: 100px;
+  }
+}
+
+// Error message styling
+.bg-red-100 {
+  animation: fadeIn 0.4s ease-out forwards;
+  border-left: 4px solid #f56565;
+}
+
+// Recommended plan badge pulse
+@keyframes pulseBadge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.bg-blue-100.text-blue-800 {
+  animation: pulseBadge 2s infinite;
+}
+
+// Checkbox animation
+.h-4.w-4.text-blue-600 {
+  transition: all 0.2s ease;
+  
+  &:checked {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+}
