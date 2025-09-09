@@ -135,7 +135,7 @@
                 <div class="font-medium">{{ payment.tenantName }}</div>
                 <div class="text-sm text-gray-500">
                   <span>{{ payment.unitNumber }}</span> • 
-                  <span>{{ payment.date }}</span>
+                  <span>{{ payment.date | date:'MMM d, y' }}</span>
                 </div>
               </div>
               <div class="text-lg font-bold text-green-600">${{ payment.amount.toFixed(2) }}</div>
