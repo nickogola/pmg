@@ -8,7 +8,7 @@ import { Lease } from '../models/lease';
   providedIn: 'root'
 })
 export class LeaseService {
-  private apiUrl = '/api/leases';
+  private apiUrl = 'https://localhost:7225/api/leases';
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +32,7 @@ export class LeaseService {
   createLease(lease: Lease): Observable<Lease> {
     return this.http.post<Lease>(this.apiUrl, lease)
       .pipe(
-        tap(newLease => console.log(`Created lease w/ id=${newLease.id}`)),
+        tap(newLease => console.log(`Created lease w/ id=${newLease.leaseId}`)),
         catchError(this.handleError<Lease>('createLease'))
       );
   }

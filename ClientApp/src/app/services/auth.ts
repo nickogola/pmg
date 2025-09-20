@@ -51,21 +51,30 @@ export class Auth {
 
   login(email: string, password: string): Observable<User> {
     // Mock login for development
-    const user = this.mockUsers.find(u => 
-      u.email.toLowerCase() === email.toLowerCase() && u.password === password
-    );
-
-    if (user) {
+    debugger
+    return this.http.post<User>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap(user => {
       // Remove password from user object before storing
       const { password, ...userWithoutPassword } = user;
       const safeUser = userWithoutPassword as User;
-      
+
       localStorage.setItem('currentUser', JSON.stringify(safeUser));
       this.currentUserSubject.next(safeUser);
-      return of(safeUser).pipe(delay(800)); // Simulate API delay
-    }
+      }),
+      catchError((error: HttpErrorResponse) => throwError(() => error))
+    );
+
+    // if (user) {
+    //   // Remove password from user object before storing
+    //   const { password, ...userWithoutPassword } = user;
+    //   const safeUser = userWithoutPassword as User;
+      
+    //   localStorage.setItem('currentUser', JSON.stringify(safeUser));
+    //   this.currentUserSubject.next(safeUser);
+    //   return of(safeUser).pipe(delay(800)); // Simulate API delay
+    // }
     
-    return throwError(() => new Error('Invalid email or password'));
+    // return throwError(() => new Error('Invalid email or password'));
   }
 
   logout(): void {
@@ -76,6 +85,13 @@ export class Auth {
 
   register(user: User): Observable<User> {
     // Mock register for development
-    return of({...user, id: Math.floor(Math.random() * 1000)}).pipe(delay(800));
+    debugger
+    return this.http.post<User>(`${this.apiUrl}/register`, user).pipe(
+      tap(newUser => {
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      this.currentUserSubject.next(newUser);
+      }),
+      catchError((error: HttpErrorResponse) => throwError(() => error))
+    );
   }
 }

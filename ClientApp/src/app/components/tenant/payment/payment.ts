@@ -4,6 +4,10 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 import { Router, RouterModule } from '@angular/router';
 import { PaymentService } from '../../../services/payment';
 import { Auth } from '../../../services/auth';
+import { Stripe } from '@stripe/stripe-js/dist/stripe-js/stripe';
+import { loadStripe } from '@stripe/stripe-js';
+import { PaymentBody } from '../../../models/payment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-payment',
@@ -31,14 +35,19 @@ export class Payment implements OnInit {
   ];
   pastPayments: any[] = [];
 
+  private apiUrl = 'https://localhost:7225/api/payments';
+    stripe: Stripe | null = null;
+    cardElement: any; // Stripe Element
+
   constructor(
     private formBuilder: FormBuilder,
     private paymentService: PaymentService,
     private authService: Auth,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(){
     this.paymentForm = this.formBuilder.group({
       paymentType: ['Rent', Validators.required],
       amount: [this.paymentAmount, [Validators.required, Validators.min(0.01)]],
@@ -66,6 +75,13 @@ export class Payment implements OnInit {
         this.loadPaymentHistory(userId);
       }
     }
+
+    // Initialize Stripe
+    debugger
+     this.stripe = await loadStripe('pk_test_51S8WkJPZH47YlnBuLzF9ZRNkHbmOddKvxpYUhmFmEqhfLDgcowV11vRzdk0Kc7CgQ3k1GbPkN9zpNprteccso1fI00qCx4TO6t'); // Replace with your key
+        const elements = this.stripe?.elements();
+        this.cardElement = elements?.create('card');
+        this.cardElement?.mount('#card-element');
 
     // Watch for payment type changes
     this.paymentForm.get('paymentType')?.valueChanges.subscribe(type => {
@@ -96,11 +112,45 @@ export class Payment implements OnInit {
   get cardExpiry() { return this.paymentForm.get('cardExpiry'); }
   get cardCvc() { return this.paymentForm.get('cardCvc'); }
 
+    async handleSubmit() {
+        // 1. Call backend to create PaymentIntent
+        const response = await this.http.post<{ clientSecret: string }>(
+          `${this.apiUrl}/create-payment-intent`,
+          new PaymentBody(1000, 'usd')
+        ).toPromise();
+        const clientSecret = response?.clientSecret;
+        if (!clientSecret) {
+          console.error('PaymentIntent clientSecret is undefined.');
+          return;
+        }
+        debugger
+        // 2. Confirm payment on the client-side
+        const result = await this.stripe?.confirmCardPayment(
+          clientSecret,
+          {
+            payment_method: {
+              card: this.cardElement,
+            },
+          }
+        );
+    
+        const paymentIntent = result?.paymentIntent;
+        const error = result?.error;
+    
+        if (error) {
+          console.error(error);
+          // Display error to user
+        } else if (paymentIntent?.status === 'succeeded') {
+          console.log('Payment succeeded!', paymentIntent);
+          // Display success to user
+        }
+      }
   onSubmit(): void {
     if (this.paymentForm.invalid) {
       return;
     }
 
+    this.handleSubmit();
     this.isSubmitting = true;
     this.errorMessage = '';
     this.successMessage = '';
@@ -123,6 +173,7 @@ export class Payment implements OnInit {
       status: 'Paid'
     };
 
+   
     // In a real app, this would make a payment with a payment processor first
     // Then record the payment after successful transaction
     setTimeout(() => {

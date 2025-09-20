@@ -28,24 +28,28 @@ describe('LeaseService', () => {
     it('should return expected leases', () => {
       const mockLeases: Lease[] = [
         { 
-          id: 1, 
+          leaseId: 1, 
           unitId: 101, 
           tenantId: 201, 
-          startDate: '2023-01-01', 
-          endDate: '2023-12-31', 
+          startDate: new Date('2023-01-01'), 
+          endDate: new Date('2023-12-31'), 
           monthlyRent: 1200, 
           securityDeposit: 1200, 
-          isActive: true 
+          isActive: true,
+          createdAt: new Date('2023-01-01'),
+          updatedAt: new Date('2023-06-01')
         },
         { 
-          id: 2, 
+          leaseId: 2, 
           unitId: 102, 
           tenantId: 202, 
-          startDate: '2023-02-01', 
-          endDate: '2024-01-31', 
+          startDate: new Date('2023-02-01'), 
+          endDate: new Date('2024-01-31'), 
           monthlyRent: 1500, 
           securityDeposit: 1500, 
-          isActive: true 
+          isActive: true,
+          createdAt: new Date('2023-02-01'),
+          updatedAt: new Date('2023-07-01')
         }
       ];
 
@@ -62,14 +66,16 @@ describe('LeaseService', () => {
   describe('getLease', () => {
     it('should return expected lease', () => {
       const mockLease: Lease = { 
-        id: 1, 
+        leaseId: 1, 
         unitId: 101, 
         tenantId: 201, 
-        startDate: '2023-01-01', 
-        endDate: '2023-12-31', 
+        startDate: new Date('2023-01-01'), 
+        endDate: new Date('2023-12-31'), 
         monthlyRent: 1200, 
         securityDeposit: 1200, 
-        isActive: true 
+        isActive: true,
+        createdAt: new Date('2023-01-01'),
+        updatedAt: new Date('2023-06-01')
       };
 
       service.getLease(1).subscribe(lease => {
@@ -85,18 +91,20 @@ describe('LeaseService', () => {
   describe('createLease', () => {
     it('should create a lease', () => {
       const newLease: Lease = { 
+    leaseId: 1, 
         unitId: 101, 
         tenantId: 201, 
-        startDate: '2023-01-01', 
-        endDate: '2023-12-31', 
+        startDate: new Date('2023-01-01'), 
+        endDate: new Date('2023-12-31'), 
         monthlyRent: 1200, 
         securityDeposit: 1200, 
-        isActive: true 
+        isActive: true,
+        createdAt: new Date('2023-01-01'),
+        updatedAt: new Date('2023-06-01')
       };
-      
-      const mockResponse: Lease = { 
-        id: 1, 
-        ...newLease 
+
+      const mockResponse: Lease = {
+        ...newLease
       };
 
       service.createLease(newLease).subscribe(lease => {
@@ -113,14 +121,16 @@ describe('LeaseService', () => {
   describe('updateLease', () => {
     it('should update a lease', () => {
       const updateLease: Lease = { 
-        id: 1, 
+        leaseId: 1,
         unitId: 101, 
         tenantId: 201, 
-        startDate: '2023-01-01', 
-        endDate: '2024-12-31', // Updated end date
-        monthlyRent: 1300, // Updated monthly rent
+        startDate: new Date('2023-01-01'), 
+        endDate: new Date('2023-12-31'), 
+        monthlyRent: 1200, 
         securityDeposit: 1200, 
-        isActive: true 
+        isActive: true,
+        createdAt: new Date('2023-01-01'),
+        updatedAt: new Date('2023-06-01')
       };
 
       service.updateLease(1, updateLease).subscribe(lease => {

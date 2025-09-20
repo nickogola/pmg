@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
 using Server.Models;
+using Stripe;
 
 namespace Server.Controllers
 {
@@ -11,9 +12,12 @@ namespace Server.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public PaymentsController(ApplicationDbContext context)
+        private readonly IConfiguration _configuration;
+
+        public PaymentsController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // GET: api/Payments
@@ -22,10 +26,10 @@ namespace Server.Controllers
         {
             return await _context.Payments
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Tenant)
+                   // .ThenInclude(l => l.Tenant)
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Unit)
-                        .ThenInclude(u => u.Property)
+                   // .ThenInclude(l => l.Unit)
+                      //  .ThenInclude(u => u.Property)
                 .ToListAsync();
         }
 
@@ -35,10 +39,10 @@ namespace Server.Controllers
         {
             var payment = await _context.Payments
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Tenant)
+                    //.ThenInclude(l => l.Tenant)
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Unit)
-                        .ThenInclude(u => u.Property)
+                    //.ThenInclude(l => l.Unit)
+                        //.ThenInclude(u => u.Property)
                 .FirstOrDefaultAsync(p => p.PaymentId == id);
 
             if (payment == null)
@@ -55,10 +59,10 @@ namespace Server.Controllers
         {
             return await _context.Payments
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Tenant)
+                   // .ThenInclude(l => l.Tenant)
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Unit)
-                        .ThenInclude(u => u.Property)
+                    //.ThenInclude(l => l.Unit)
+                      //  .ThenInclude(u => u.Property)
                 .Where(p => p.Lease.TenantId == tenantId)
                 .ToListAsync();
         }
@@ -69,12 +73,30 @@ namespace Server.Controllers
         {
             return await _context.Payments
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Tenant)
+                   // .ThenInclude(l => l.Tenant)
                 .Include(p => p.Lease)
-                    .ThenInclude(l => l.Unit)
-                        .ThenInclude(u => u.Property)
-                .Where(p => p.Lease.Unit.PropertyId == propertyId)
+                    //.ThenInclude(l => l.Unit)
+                     //   .ThenInclude(u => u.Property)
+               // .Where(p => p.Lease.Unit.PropertyId == propertyId)
                 .ToListAsync();
+        }
+
+        //
+        [HttpPost("create-payment-intent")]
+        public async Task<IActionResult> CreatePaymentIntent([FromBody] PaymentRequest request)
+        {
+            StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"]; // Get from appsettings.json
+
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = request.Amount,
+                Currency = request.Currency,
+                // Add other options like automatic_payment_methods
+            };
+            var service = new PaymentIntentService();
+            var paymentIntent = await service.CreateAsync(options);
+
+            return Ok(new { clientSecret = paymentIntent.ClientSecret });
         }
 
         // PUT: api/Payments/5

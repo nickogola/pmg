@@ -101,7 +101,7 @@
                 <div class="font-medium">{{ ticket.title }}</div>
                 <div class="text-sm text-gray-500">
                   <span>{{ ticket.tenantName }}</span> • 
-                  <span>{{ ticket.createdAt }}</span>
+                  <span>{{ ticket.createdAt | date:'MMM d, y'  }}</span>
                 </div>
               </div>
               <div [ngClass]="{

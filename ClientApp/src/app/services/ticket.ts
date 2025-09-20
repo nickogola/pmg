@@ -81,13 +81,14 @@ export class TicketService {
   }
 
   getTicketsByTenant(tenantId: number): Observable<Ticket[]> {
-    const tickets = this.mockTickets.filter(t => t.tenantId === tenantId);
-    return of(tickets).pipe(delay(500));
+    return this.http.get<Ticket[]>(`${this.apiUrl}/tenant/${tenantId}`);
+    //return of(tickets).pipe(delay(500));
   }
 
   getTicketsByProperty(propertyId: number): Observable<Ticket[]> {
-    const tickets = this.mockTickets.filter(t => t.propertyId === propertyId);
-    return of(tickets).pipe(delay(500));
+    return this.http.get<Ticket[]>(`${this.apiUrl}/property/${propertyId}`);
+    //const tickets = this.mockTickets.filter(t => t.propertyId === propertyId);
+    //return of(tickets).pipe(delay(500));
   }
 
   createTicket(ticket: Ticket): Observable<Ticket> {

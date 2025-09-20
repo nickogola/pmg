@@ -37,8 +37,8 @@ namespace Server.Models
         [ForeignKey("UnitId")]
         public Unit? Unit { get; set; }
         
-        [ForeignKey("TenantId")]
-        public User? Tenant { get; set; }
+        //[ForeignKey("TenantId")]
+        //public User? Tenant { get; set; }
         
         public ICollection<TicketComment>? Comments { get; set; }
     }

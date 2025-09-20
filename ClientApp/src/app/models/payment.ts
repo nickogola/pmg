@@ -19,3 +19,13 @@ export interface Payment {
   tenantName?: string;
   unitNumber?: string;
 }
+
+export class PaymentBody {
+  amount?: number;
+  currency?: string;
+  
+   constructor(amount: number, currency: string) {
+    this.amount = amount;
+    this.currency = currency;
+  }
+}

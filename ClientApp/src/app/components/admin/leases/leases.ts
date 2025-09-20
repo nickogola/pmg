@@ -5,6 +5,7 @@ import { Lease } from '../../../models/lease';
 import { LeaseService } from '../../../services/lease.service';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { Auth } from '../../../services/auth';
 
 @Component({
   selector: 'app-admin-leases',
@@ -36,6 +37,7 @@ export class AdminLeasesComponent implements OnInit {
 
   constructor(
     private leaseService: LeaseService, 
+    private authService: Auth,
     private fb: FormBuilder
   ) {}
 
@@ -96,7 +98,7 @@ export class AdminLeasesComponent implements OnInit {
     ];
     
     this.availableUnits = [
-      { id: 101, propertyId: 1, unitNumber: 'A101' },
+      { id: 1, propertyId: 1, unitNumber: 'A101' },
       { id: 102, propertyId: 1, unitNumber: 'A102' },
       { id: 103, propertyId: 1, unitNumber: 'A103' },
       { id: 201, propertyId: 2, unitNumber: 'B201' },
@@ -106,7 +108,7 @@ export class AdminLeasesComponent implements OnInit {
     
     this.tenants = [
       { id: 1, firstName: 'John', lastName: 'Doe' },
-      { id: 2, firstName: 'Jane', lastName: 'Smith' },
+      { id: 9, firstName: 'Jane', lastName: 'Smith' },
       { id: 3, firstName: 'Robert', lastName: 'Johnson' },
       { id: 4, firstName: 'Emily', lastName: 'Williams' }
     ];
@@ -181,11 +183,13 @@ export class AdminLeasesComponent implements OnInit {
     }
     
     // Prepare dates for form
-    const startDate = lease.startDate ? new Date(lease.startDate).toISOString().split('T')[0] : '';
-    const endDate = lease.endDate ? new Date(lease.endDate).toISOString().split('T')[0] : '';
-    
+    const startDate = lease.startDate ? new Date(lease.startDate) : null;
+    const endDate = lease.endDate ? new Date(lease.endDate) : null;
+    //   const startDate = lease.startDate ? new Date(lease.startDate).toISOString().split('T')[0] : '';
+    // const endDate = lease.endDate ? new Date(lease.endDate).toISOString().split('T')[0] : '';
+
     this.leaseForm.patchValue({
-      id: lease.id,
+      leaseId: 1,
       propertyId: lease.propertyId?.toString() || '',
       unitId: lease.unitId?.toString() || '',
       tenantId: lease.tenantId?.toString() || '',
@@ -219,6 +223,8 @@ export class AdminLeasesComponent implements OnInit {
     // Convert form values
     const leaseData: Lease = {
       ...formValue,
+      startDate: new Date(formValue.startDate),
+      endDate: new Date(formValue.endDate),
       unitId: parseInt(formValue.unitId, 10),
       tenantId: parseInt(formValue.tenantId, 10),
       monthlyRent: parseFloat(formValue.monthlyRent),
@@ -228,13 +234,13 @@ export class AdminLeasesComponent implements OnInit {
     // Remove propertyId as it's not part of the Lease model (just used for unit selection)
     delete leaseData.propertyId;
     
-    if (this.isEditMode && leaseData.id) {
+    if (this.isEditMode && leaseData.leaseId) {
       // Update existing lease
-      this.leaseService.updateLease(leaseData.id, leaseData).subscribe({
+      this.leaseService.updateLease(leaseData.leaseId, leaseData).subscribe({
         next: (updatedLease) => {
           this.handleFormSuccess('Lease updated successfully');
           // Update lease in list
-          const index = this.leases.findIndex(l => l.id === updatedLease.id);
+          const index = this.leases.findIndex(l => l.leaseId === updatedLease.leaseId);
           if (index !== -1) {
             this.leases[index] = { ...this.leases[index], ...updatedLease };
             this.processLeases();
@@ -292,7 +298,7 @@ export class AdminLeasesComponent implements OnInit {
 
   terminateLease(lease: Lease): void {
     if (confirm('Are you sure you want to terminate this lease? This action cannot be undone.')) {
-      this.leaseService.terminateLease(lease.id!).subscribe({
+      this.leaseService.terminateLease(lease.leaseId!).subscribe({
         next: () => {
           // Update lease status
           lease.isActive = false;

@@ -156,3 +156,48 @@ BEGIN
     );
 END
 GO
+
+-- Create Subscriptions table
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Subscriptions]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE [dbo].[Subscriptions](
+        [SubscriptionId] NVARCHAR(50) PRIMARY KEY,
+        [UserId] INT NOT NULL,
+        [PlanId] NVARCHAR(50) NOT NULL,
+        [PlanName] NVARCHAR(100) NOT NULL,
+        [Status] NVARCHAR(20) NOT NULL CHECK (Status IN ('active', 'canceled', 'past_due', 'unpaid', 'pending')),
+        [StartDate] DATETIME NOT NULL,
+        [EndDate] DATETIME NULL,
+        [TrialEndDate] DATETIME NULL,
+        [CurrentPeriodStart] DATETIME NOT NULL,
+        [CurrentPeriodEnd] DATETIME NOT NULL,
+        [CancelAtPeriodEnd] BIT NOT NULL DEFAULT 0,
+        [Amount] DECIMAL(10, 2) NOT NULL,
+        [Interval] NVARCHAR(10) NOT NULL CHECK (Interval IN ('month', 'year')),
+        [PaymentMethodId] NVARCHAR(100) NULL,
+        [LastFourDigits] NVARCHAR(4) NULL,
+        [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE(),
+        [UpdatedAt] DATETIME NOT NULL DEFAULT GETDATE(),
+        FOREIGN KEY (UserId) REFERENCES Users(UserId)
+    );
+END
+GO
+
+-- Create Invoices table
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Invoices]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE [dbo].[Invoices](
+        [InvoiceId] NVARCHAR(50) PRIMARY KEY,
+        [UserId] INT NOT NULL,
+        [SubscriptionId] NVARCHAR(50) NOT NULL,
+        [Amount] DECIMAL(10, 2) NOT NULL,
+        [Status] NVARCHAR(20) NOT NULL CHECK (Status IN ('paid', 'open', 'past_due', 'failed')),
+        [Date] DATETIME NOT NULL,
+        [PaidDate] DATETIME NULL,
+        [ReceiptUrl] NVARCHAR(255) NULL,
+        [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE(),
+        FOREIGN KEY (UserId) REFERENCES Users(UserId),
+        FOREIGN KEY (SubscriptionId) REFERENCES Subscriptions(SubscriptionId)
+    );
+END
+GO

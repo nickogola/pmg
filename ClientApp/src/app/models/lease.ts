@@ -1,15 +1,14 @@
 export interface Lease {
-  id?: number;
-  leaseId?: number;
+  leaseId: number;
   unitId: number;
   tenantId: number;
-  startDate: string | Date;
-  endDate: string | Date;
+  startDate: Date;
+  endDate: Date;
   monthlyRent: number;
   securityDeposit: number;
   isActive: boolean;
-  createdAt?: string | Date;
-  updatedAt?: string | Date;
+  createdAt: Date;
+  updatedAt: Date;
   
   // Navigation properties
   unit?: any;

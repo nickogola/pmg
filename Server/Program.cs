@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Server.Models;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,10 @@ builder.Services.AddSwaggerGen();
 // Add database context
 builder.Services.AddDbContext<Server.Data.ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//add stripe
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
 // Add CORS
 builder.Services.AddCors(options =>

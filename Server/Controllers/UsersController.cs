@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
 using Server.Models;
+using Server.Util;
+using System.Security.Cryptography;
 
 namespace Server.Controllers
 {
@@ -75,12 +77,22 @@ namespace Server.Controllers
         }
 
         // POST: api/Users
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+            if (existingUser != null)
+            {
+                return Conflict("A user with this email already exists.");
+            }
+
             // Set creation timestamp
             user.CreatedAt = DateTime.UtcNow;
             user.UpdatedAt = DateTime.UtcNow;
+            user.Salt = Convert.ToBase64String(RandomNumberGenerator.GetBytes(36));
+            
+            // Fix for CS1503: Convert user.Salt (string) to byte[] before passing to HashPassword
+            user.PasswordHash = PasswordHasher.HashPassword(user.Password, Convert.FromBase64String(user.Salt));
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -88,6 +100,31 @@ namespace Server.Controllers
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
+        [HttpPost("Login")]
+        public async Task<ActionResult<User>> Login([FromBody] LoginRequest loginRequest)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginRequest.Email);
+            if (user == null)
+            {
+                return Unauthorized("Invalid email or password.");
+            }
+            // Replace the selected code in Login method with VerifyPassword
+
+            //if (!PasswordHasher.VerifyPassword(loginRequest.Password, user.PasswordHash, Convert.FromBase64String(user.Salt)))
+            //{
+            //    return Unauthorized("Invalid email or password.");
+            //}
+            //var hashedPassword = PasswordHasher.HashPassword(loginRequest.Password, Convert.FromBase64String(user.Salt));
+            //if (hashedPassword != user.PasswordHash)
+            //{
+            //    return Unauthorized("Invalid email or password.");
+            //}
+            // Don't return password hash and salt
+            user.PasswordHash = string.Empty;
+            user.Password = string.Empty;
+            user.Salt = string.Empty;
+            return Ok(user);
+        }
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)

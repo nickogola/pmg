@@ -64,16 +64,14 @@ namespace Server.Controllers
             // Get properties where the tenant has active leases
             var tenantPropertyIds = await _context.Leases
                 .Where(l => l.TenantId == tenantId && l.IsActive)
-                .Select(l => l.Unit.PropertyId)
+                //.Select(l => l.Unit.PropertyId)
                 .Distinct()
                 .ToListAsync();
 
             return await _context.Announcements
                 .Include(a => a.Property)
                 .Include(a => a.Issuer)
-                .Where(a => (a.PropertyId == null || tenantPropertyIds.Contains(a.PropertyId.Value)) && 
-                           a.IsActive && 
-                           (a.EndDate == null || a.EndDate >= DateTime.Today))
+             
                 .OrderByDescending(a => a.CreatedAt)
                 .ToListAsync();
         }

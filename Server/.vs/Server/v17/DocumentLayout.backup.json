@@ -3,20 +3,72 @@
   "WorkspaceRootPath": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\ticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\ticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\leasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\leasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\announcementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\announcementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\lease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\lease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\paymentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\paymentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\ticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\ticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\util\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:util\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\stripesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\stripesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\controllers\\subscriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:controllers\\subscriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\ticketcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\ticketcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ogola\\Downloads\\SportKE.API-master\\SportKE.API-master\\SportKE.API\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
@@ -26,36 +78,12 @@
       "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\announcement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\lease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\lease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\models\\ticketcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:models\\ticketcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|c:\\users\\ogola\\projects\\project-mgt-angular\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF716E18-D449-4AC8-B952-12EE8888E5F7}|Server.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -65,56 +93,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "Lease.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Lease.cs",
+              "RelativeDocumentMoniker": "Models\\Lease.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Lease.cs",
+              "RelativeToolTip": "Models\\Lease.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAgwCoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T18:48:06.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAnwF4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T01:52:16.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAA/wC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T18:48:27.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Util\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "Util\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Util\\PasswordHasher.cs",
+              "RelativeToolTip": "Util\\PasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T10:14:53.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "TicketsController.cs",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\TicketsController.cs",
               "RelativeDocumentMoniker": "Controllers\\TicketsController.cs",
               "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\TicketsController.cs",
               "RelativeToolTip": "Controllers\\TicketsController.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAA2wJoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAewBUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T19:25:53.762Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Announcement.cs",
-              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Announcement.cs",
-              "RelativeDocumentMoniker": "Models\\Announcement.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Announcement.cs",
-              "RelativeToolTip": "Models\\Announcement.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAIwAUAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:47:28.381Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Ticket.cs",
-              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Ticket.cs",
-              "RelativeDocumentMoniker": "Models\\Ticket.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Ticket.cs",
-              "RelativeToolTip": "Models\\Ticket.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAcwAUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:46:35.216Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 0,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBAAAAAWAAAA",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Data\\ApplicationDbContext.cs*",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs*",
+              "ViewState": "AgIAADkAAAAAAAAAAAAkwEkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:45:09.534Z"
+              "WhenOpened": "2025-09-06T18:45:09.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PaymentRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\PaymentRequest.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentRequest.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\PaymentRequest.cs",
+              "RelativeToolTip": "Controllers\\PaymentRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T02:32:22.694Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -122,27 +192,98 @@
               "Title": "AnnouncementsController.cs",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\AnnouncementsController.cs",
               "RelativeDocumentMoniker": "Controllers\\AnnouncementsController.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\AnnouncementsController.cs",
-              "RelativeToolTip": "Controllers\\AnnouncementsController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAIA5wBAAAAAfAAAA",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\AnnouncementsController.cs*",
+              "RelativeToolTip": "Controllers\\AnnouncementsController.cs*",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAEkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:16:04.95Z"
+              "WhenOpened": "2025-09-06T18:16:04.95Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T01:12:15.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeasesController.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\LeasesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LeasesController.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\LeasesController.cs*",
+              "RelativeToolTip": "Controllers\\LeasesController.cs*",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAwwPQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T03:38:26.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StripeSettings.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\StripeSettings.cs",
+              "RelativeDocumentMoniker": "Models\\StripeSettings.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\StripeSettings.cs",
+              "RelativeToolTip": "Models\\StripeSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T09:49:15.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAABcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T18:18:01.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SubscriptionsController.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\SubscriptionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SubscriptionsController.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Controllers\\SubscriptionsController.cs",
+              "RelativeToolTip": "Controllers\\SubscriptionsController.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAPQAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T02:15:13.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAB0AAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-06T18:52:22.33Z"
+              "WhenOpened": "2025-09-06T18:52:22.33Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ogola\\Downloads\\SportKE.API-master\\SportKE.API-master\\SportKE.API\\appsettings.json",
               "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\SportKE.API-master\\SportKE.API-master\\SportKE.API\\appsettings.json",
@@ -154,19 +295,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
+              "Title": "Unit.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Unit.cs",
+              "RelativeDocumentMoniker": "Models\\Unit.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Unit.cs",
+              "RelativeToolTip": "Models\\Unit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T18:48:16.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "TicketComment.cs",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\TicketComment.cs",
               "RelativeDocumentMoniker": "Models\\TicketComment.cs",
               "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\TicketComment.cs",
               "RelativeToolTip": "Models\\TicketComment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAIAAAA",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T18:47:40.613Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
+              "Title": "Ticket.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Ticket.cs",
+              "RelativeDocumentMoniker": "Models\\Ticket.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Ticket.cs",
+              "RelativeToolTip": "Models\\Ticket.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T18:46:35.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Announcement.cs",
+              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Announcement.cs",
+              "RelativeDocumentMoniker": "Models\\Announcement.cs",
+              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Announcement.cs",
+              "RelativeToolTip": "Models\\Announcement.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAIwAUAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T18:47:28.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "Property.cs",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Property.cs",
               "RelativeDocumentMoniker": "Models\\Property.cs",
@@ -178,7 +356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "Models\\Payment.cs",
@@ -187,58 +365,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T18:47:59.108Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Lease.cs",
-              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Lease.cs",
-              "RelativeDocumentMoniker": "Models\\Lease.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Lease.cs",
-              "RelativeToolTip": "Models\\Lease.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:48:06.16Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Unit.cs",
-              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Unit.cs",
-              "RelativeDocumentMoniker": "Models\\Unit.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\Unit.cs",
-              "RelativeToolTip": "Models\\Unit.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:48:16.716Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:48:27.064Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\ogola\\projects\\project-mgt-angular\\Server\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:18:01.793Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

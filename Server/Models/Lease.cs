@@ -38,12 +38,12 @@ namespace Server.Models
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties
-        [ForeignKey("UnitId")]
-        public Unit? Unit { get; set; }
+        //[ForeignKey("UnitId")]
+        //public Unit? Unit { get; set; }
         
-        [ForeignKey("TenantId")]
-        public User? Tenant { get; set; }
+        //[ForeignKey("TenantId")]
+        //public User? Tenant { get; set; }
         
-        public ICollection<Payment>? Payments { get; set; }
+        //public ICollection<Payment>? Payments { get; set; }
     }
 }
