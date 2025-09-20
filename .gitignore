@@ -1,18 +1,22 @@
-# Visual Studio files
+# Visual Studio / Visual Studio Code
 .vs/
 .vscode/*
-/**/.vs
-/**/bin
-/**/obj
+/**/.vs/
+/**/.vsconfig
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/*
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 *.userprefs
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
 
 # Build results
 [Dd]ebug/
@@ -26,15 +30,26 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+build/
+msbuild.log
+msbuild.err
+msbuild.wrn
 
 # .NET Core
 project.lock.json
 project.fragment.lock.json
 artifacts/
+**/Properties/launchSettings.json
 
-# Visual Studio for Mac
-.vscode/
-*.userprefs
+# VS database projects
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
 
 # ReSharper
 _ReSharper*/
@@ -43,33 +58,71 @@ _ReSharper*/
 
 # NuGet Packages
 *.nupkg
-# The packages folder can be ignored because of Package Restore
+*.snupkg
 **/packages/*
-# except build/, which is used as an MSBuild target.
 !**/packages/build/
-# Uncomment if necessary however generally it will be regenerated when needed
-#!**/packages/repositories.config
-# NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
 
-# Angular / Node.js
-# Keep ClientApp/.gitignore for Angular-specific ignores
+# Node.js and NPM (main rules - detailed ones in ClientApp/.gitignore)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnp.*
+.npm
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
-# ClientApp specific ignores are maintained in ClientApp/.gitignore 
-# This includes:
-# - /dist
-# - /tmp
-# - /out-tsc
-# - /bazel-out
-# - /node_modules
-# - npm-debug.log
-# - yarn-error.log
-# - Angular cache files
+# Testing
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+TestResults/
 
-# IDE - VS Code
-.history/*
+# Chutzpah Test files
+_Chutzpah*
+
+# SonarQube
+.sonarqube/
+
+# Visual Studio Profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Code Workspace
+*.code-workspace
+
+# MS Office temporary files
+~$*
+*.tmp
 
 # Misc
 .DS_Store
 Thumbs.db
+*.bak
+*.cache
+*.log
+*.vspscc
+*.vssscc
+.sass-cache/
+connect.lock
+
+# Local config files that may contain secrets
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+!appsettings.Example.json
+secrets.json
+*.Development.config
+
+# Docker
+.dockerignore
+docker-compose.override.yml
