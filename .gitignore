@@ -33,7 +33,9 @@ project.fragment.lock.json
 artifacts/
 
 # Sensitive configuration files
+# Ensure both case variants are ignored across all folders
 **/appsettings.Development.json
+**/appsettings.[Dd]evelopment.json
 **/appsettings.Production.json
 **/appsettings.Staging.json
 **/appsettings.json
