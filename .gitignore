@@ -32,6 +32,13 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
+# Sensitive configuration files
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/appsettings.Staging.json
+**/appsettings.json
+!**/appsettings.Example.json
+
 # Visual Studio for Mac
 .vscode/
 *.userprefs
