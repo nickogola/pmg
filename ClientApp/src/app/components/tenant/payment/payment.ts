@@ -77,8 +77,8 @@ export class Payment implements OnInit {
     }
 
     // Initialize Stripe
-    debugger
-     this.stripe = await loadStripe('pk_test_51S8WkJPZH47YlnBuLzF9ZRNkHbmOddKvxpYUhmFmEqhfLDgcowV11vRzdk0Kc7CgQ3k1GbPkN9zpNprteccso1fI00qCx4TO6t'); // Replace with your key
+   
+     this.stripe = await loadStripe(''); // Replace with your key
         const elements = this.stripe?.elements();
         this.cardElement = elements?.create('card');
         this.cardElement?.mount('#card-element');

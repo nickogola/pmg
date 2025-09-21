@@ -5,6 +5,7 @@ import { delay } from 'rxjs/operators';
 import { Payment, PaymentBody } from '../models/payment';
 import { Stripe } from '@stripe/stripe-js/dist/stripe-js/stripe';
 import { loadStripe } from '@stripe/stripe-js';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -68,8 +69,8 @@ export class PaymentService implements OnInit {
   constructor(private http: HttpClient) { }
 
    async ngOnInit() {
-    debugger
-    this.stripe = await loadStripe('pk_test_51S8WkJPZH47YlnBuLzF9ZRNkHbmOddKvxpYUhmFmEqhfLDgcowV11vRzdk0Kc7CgQ3k1GbPkN9zpNprteccso1fI00qCx4TO6t'); // Replace with your key
+    // Use environment variable for Stripe publishable key
+    this.stripe = await loadStripe(environment.stripe.publishableKey);
     const elements = this.stripe?.elements();
     this.cardElement = elements?.create('card');
     this.cardElement?.mount('#card-element'); // Mount to a div in your template
