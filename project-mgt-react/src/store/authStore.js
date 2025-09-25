@@ -4,6 +4,30 @@ import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL || 'https://localhost:7240/api';
 
+// Mock users for local development
+const mockUsers = [
+  {
+    id: 1,
+    firstName: 'John',
+    lastName: 'Tenant',
+    email: 'tenant@example.com',
+    password: 'password123',
+    userType: 'Tenant',
+    phoneNumber: '123-456-7890',
+    propertyId: 1,
+    unitId: 101
+  },
+  {
+    id: 2,
+    firstName: 'Jane',
+    lastName: 'Admin',
+    email: 'admin@example.com',
+    password: 'password123',
+    userType: 'Admin',
+    phoneNumber: '123-456-7891'
+  }
+];
+
 export const useAuthStore = create(
   persist(
     (set, get) => ({
@@ -32,31 +56,41 @@ export const useAuthStore = create(
         }
       },
 
-    // Login user using localStorage (mock authentication)
+    // Login user (mock authentication)
     login: async (credentials) => {
       set({ isLoading: true, error: null });
       try {
-        // Retrieve users from localStorage
-        // const users = JSON.parse(localStorage.getItem('users')) || [];
-        // const foundUser = users.find(
-        // (u) => u.email === credentials.email && u.password === credentials.password
-        // );
+        // Look up in mock users first
+        let foundUser = mockUsers.find(
+          (u) => u.email.toLowerCase() === credentials.email.toLowerCase() && u.password === credentials.password
+        );
 
-        // if (foundUser) {
-        // // Simulate a token
-        // const token = btoa(`${foundUser.email}:${foundUser.password}`);
-        // set({
-        //   user: foundUser,
-        //   token,
-        //   isLoggedIn: true,
-        //   isLoading: false
-        // });
-        // // Setup default auth header for future requests
-        // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        // Optionally, also check any locally-registered users stored in localStorage
+        if (!foundUser) {
+          const stored = JSON.parse(localStorage.getItem('users') || '[]');
+          foundUser = stored.find(
+            (u) => u.email?.toLowerCase() === credentials.email.toLowerCase() && u.password === credentials.password
+          );
+        }
+
+        if (!foundUser) {
+          throw new Error('Invalid credentials');
+        }
+
+        // Simulate a token
+        const token = btoa(`${foundUser.email}:${foundUser.password}`);
+
+        // Persist axios auth header for subsequent requests (optional in mock mode)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        set({
+          user: { ...foundUser, password: undefined },
+          token,
+          isLoggedIn: true,
+          isLoading: false
+        });
+
         return { success: true };
-        // } else {
-        // throw new Error('Invalid credentials');
-        // }
       } catch (error) {
         const errorMessage = error.message || 'Invalid credentials';
         set({ error: errorMessage, isLoading: false });
@@ -96,24 +130,15 @@ export const useAuthStore = create(
         }
       },
 
-      // Check authentication status
+      // Check authentication status (offline mock): rely on persisted token+user
       checkAuth: async () => {
-        const { token } = get();
-        if (!token) return false;
-
-        try {
-          // Set default auth header
+        const { token, user } = get();
+        if (token && user) {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          
-          // Verify token is valid by making a request to get user data
-          const response = await axios.get(`${API_URL}/users/me`);
-          set({ user: response.data, isLoggedIn: true });
+          set({ isLoggedIn: true });
           return true;
-        } catch (error) {
-          // If token is invalid, logout the user
-          get().logout();
-          return false;
         }
+        return false;
       },
 
       // Clear any errors
@@ -125,6 +150,16 @@ export const useAuthStore = create(
     }
   )
 );
+
+// Seed mock users into localStorage (if not already present)
+try {
+  const existing = JSON.parse(localStorage.getItem('users') || '[]');
+  if (!Array.isArray(existing) || existing.length === 0) {
+    localStorage.setItem('users', JSON.stringify(mockUsers));
+  }
+} catch {
+  // ignore
+}
 
 // Set up axios interceptor to add token to all requests
 axios.interceptors.request.use(

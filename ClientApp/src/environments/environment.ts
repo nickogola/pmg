@@ -1,7 +1,8 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5000',
+  apiUrl: 'https://localhost:7225',
   stripe: {
-    publishableKey: 'pk_test_YOUR_PUBLISHABLE_KEY'
+    // Only the publishable key is ever exposed to the frontend.
+    publishableKey: ''
   }
 };
