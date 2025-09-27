@@ -33,7 +33,7 @@
         <h2 class="text-lg font-medium text-gray-900">Announcements</h2>
       </div>
       <div class="px-4 py-5 sm:p-6">
-        <ng-container *ngIf="loading.announcements; else announcementsList">
+        <ng-container *ngIf="loading?.announcements; else announcementsList">
           <div class="flex justify-center py-4">
             <div class="animate-pulse flex space-x-4 w-full">
               <div class="flex-1 space-y-4 py-1">
@@ -47,13 +47,13 @@
           </div>
         </ng-container>
         <ng-template #announcementsList>
-          <ul *ngIf="announcements.length > 0; else noAnnouncements" class="divide-y divide-gray-200">
+          <ul *ngIf="announcements?.length > 0; else noAnnouncements" class="divide-y divide-gray-200">
             <li *ngFor="let a of announcements" class="py-4">
               <div class="flex space-x-3">
                 <div class="flex-1 space-y-1">
                   <div class="flex items-center justify-between">
                     <h3 class="text-sm font-medium">{{ a.title }}</h3>
-                    <p class="text-xs text-gray-500">{{ a.date }}</p>
+                    <p class="text-xs text-gray-500">{{ a.date || (a.createdAt | date:'yyyy-MM-dd') }}</p>
                   </div>
                   <p class="text-sm text-gray-500">{{ a.content }}</p>
                 </div>
@@ -76,7 +76,7 @@
         <button routerLink="/tenant/create-ticket" class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200">New Request</button>
       </div>
       <div class="px-4 py-5 sm:p-6">
-        <ng-container *ngIf="loading.tickets; else ticketsTable">
+        <ng-container *ngIf="loading?.tickets; else ticketsTable">
           <div class="flex justify-center py-4">
             <div class="animate-pulse flex space-x-4 w-full">
               <div class="flex-1 space-y-4 py-1">
@@ -90,7 +90,7 @@
           </div>
         </ng-container>
         <ng-template #ticketsTable>
-          <div *ngIf="tickets.length > 0; else noTickets" class="overflow-x-auto">
+          <div *ngIf="recentTickets?.length > 0; else noTickets" class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
@@ -101,7 +101,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr *ngFor="let t of tickets" class="hover:bg-gray-50 cursor-pointer">
+                <tr *ngFor="let t of recentTickets" class="hover:bg-gray-50 cursor-pointer">
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ t.id }}</td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ t.title }}</td>
                   <td class="px-6 py-4 whitespace-nowrap">
@@ -112,7 +112,7 @@
                         'bg-green-100 text-green-800': t.status === 'Resolved'
                       }">{{ t.status }}</span>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ t.createdAt }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ t.createdAt | date:'yyyy-MM-dd' }}</td>
                 </tr>
               </tbody>
             </table>
@@ -131,7 +131,7 @@
         <button routerLink="/tenant/payment" class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200">Make Payment</button>
       </div>
       <div class="px-4 py-5 sm:p-6">
-        <ng-container *ngIf="loading.payments; else paymentsTable">
+        <ng-container *ngIf="loading?.payments; else paymentsTable">
           <div class="flex justify-center py-4">
             <div class="animate-pulse flex space-x-4 w-full">
               <div class="flex-1 space-y-4 py-1">
@@ -145,7 +145,7 @@
           </div>
         </ng-container>
         <ng-template #paymentsTable>
-          <div *ngIf="payments.length > 0; else noPayments" class="overflow-x-auto">
+          <div *ngIf="paymentHistory?.length > 0; else noPayments" class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
@@ -156,18 +156,18 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr *ngFor="let p of payments" class="hover:bg-gray-50 cursor-pointer">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ p.type }}</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${{ p.amount.toFixed(2) }}</td>
+                <tr *ngFor="let p of paymentHistory" class="hover:bg-gray-50 cursor-pointer">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ p.type || p.paymentType }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${{ (p.amount || 0) | number:'1.2-2' }}</td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
                       [ngClass]="{
-                        'bg-green-100 text-green-800': p.status === 'Paid',
+                        'bg-green-100 text-green-800': (p.status || 'Paid') === 'Paid',
                         'bg-blue-100 text-blue-800': p.status === 'Upcoming',
                         'bg-red-100 text-red-800': p.status === 'Overdue'
-                      }">{{ p.status }}</span>
+                      }">{{ p.status || 'Paid' }}</span>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ p.date }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ (p.date || p.paymentDate) | date:'yyyy-MM-dd' }}</td>
                 </tr>
               </tbody>
             </table>
